@@ -45,58 +45,131 @@
 <div id="gameBoard">
     <!-- Row 1 -->
     <div class="row">
-        <img src="images/cactus.jpg" id="img0">
-        <img src="images/cactus.jpg" id="img1">
-        <img src="images/cactus.jpg" id="img2">
-        <img src="images/cactus.jpg" id="img3">
-        <img src="images/cactus.jpg" id="img4">
-        <img src="images/cactus.jpg" id="img5">
-        <img src="images/cactus.jpg" id="img6">
+        <img src="images/cactus.jpg" id="img0" onclick="check(0)">
+        <img src="images/cactus.jpg" id="img1" onclick="check(1)">
+        <img src="images/cactus.jpg" id="img2" onclick="check(2)">
+        <img src="images/cactus.jpg" id="img3" onclick="check(3)">
+        <img src="images/cactus.jpg" id="img4" onclick="check(4)">
+        <img src="images/cactus.jpg" id="img5" onclick="check(5)">
+        <img src="images/cactus.jpg" id="img6" onclick="check(6)">
     </div>
 
     <!-- Row 2 -->
     <div class="row">
-        <img src="images/cactus.jpg" id="img7">
-        <img src="images/cactus.jpg" id="img8">
-        <img src="images/cactus.jpg" id="img9">
-        <img src="images/cactus.jpg" id="img10">
-        <img src="images/cactus.jpg" id="img11">
-        <img src="images/cactus.jpg" id="img12">
-        <img src="images/cactus.jpg" id="img13">
+        <img src="images/cactus.jpg" id="img7" onclick="check(7)">
+        <img src="images/cactus.jpg" id="img8" onclick="check(8)">
+        <img src="images/cactus.jpg" id="img9" onclick="check(9)">
+        <img src="images/cactus.jpg" id="img10" onclick="check(10)">
+        <img src="images/cactus.jpg" id="img11" onclick="check(11)">
+        <img src="images/cactus.jpg" id="img12" onclick="check(12)">
+        <img src="images/cactus.jpg" id="img13" onclick="check(13)">
     </div>
 
     <!-- Row 3 -->
     <div class="row">
-        <img src="images/cactus.jpg" id="img14">
-        <img src="images/cactus.jpg" id="img15">
-        <img src="images/cactus.jpg" id="img16">
-        <img src="images/cactus.jpg" id="img17">
-        <img src="images/cactus.jpg" id="img18">
-        <img src="images/cactus.jpg" id="img19">
-        <img src="images/cactus.jpg" id="img20">
+        <img src="images/cactus.jpg" id="img14" onclick="check(14)">
+        <img src="images/cactus.jpg" id="img15" onclick="check(15)">
+        <img src="images/cactus.jpg" id="img16" onclick="check(16)">
+        <img src="images/cactus.jpg" id="img17" onclick="check(17)">
+        <img src="images/cactus.jpg" id="img18" onclick="check(18)">
+        <img src="images/cactus.jpg" id="img19" onclick="check(19)">
+        <img src="images/cactus.jpg" id="img20" onclick="check(20)">
     </div>
 
     <!-- Row 4 -->
     <div class="row">
-        <img src="images/cactus.jpg" id="img21">
-        <img src="images/cactus.jpg" id="img22">
-        <img src="images/cactus.jpg" id="img23">
-        <img src="images/cactus.jpg" id="img24">
-        <img src="images/cactus.jpg" id="img25">
-        <img src="images/cactus.jpg" id="img26">
-        <img src="images/cactus.jpg" id="img27">
+        <img src="images/cactus.jpg" id="img21" onclick="check(21)">
+        <img src="images/cactus.jpg" id="img22" onclick="check(22)">
+        <img src="images/cactus.jpg" id="img23" onclick="check(23)">
+        <img src="images/cactus.jpg" id="img24" onclick="check(24)">
+        <img src="images/cactus.jpg" id="img25" onclick="check(25)">
+        <img src="images/cactus.jpg" id="img26" onclick="check(26)">
+        <img src="images/cactus.jpg" id="img27" onclick="check(27)">
     </div>
 
     <!-- Row 5 -->
     <div class="row">
-        <img src="images/cactus.jpg" id="img28">
-        <img src="images/cactus.jpg" id="img29">
-        <img src="images/cactus.jpg" id="img30">
-        <img src="images/cactus.jpg" id="img31">
-        <img src="images/cactus.jpg" id="img32">
-        <img src="images/cactus.jpg" id="img33">
-        <img src="images/cactus.jpg" id="img34">
+        <img src="images/cactus.jpg" id="img28" onclick="check(28)">
+        <img src="images/cactus.jpg" id="img29" onclick="check(29)">
+        <img src="images/cactus.jpg" id="img30" onclick="check(30)">
+        <img src="images/cactus.jpg" id="img31" onclick="check(31)">
+        <img src="images/cactus.jpg" id="img32" onclick="check(32)">
+        <img src="images/cactus.jpg" id="img33" onclick="check(33)">
+        <img src="images/cactus.jpg" id="img34" onclick="check(34)">
+        </div>
     </div>
-</div>
-</body>
+    </body>
+    <script>
+    const ids = [];
+    for (let i = 0; i < 35; i++) {
+        ids.push("img" + i);
+    }
+
+    let score = 0;
+    let locationsVisited = 0;
+    let lastLocation = 0;
+    const silverLocations = [2, 5, 11, 21, 32];
+    const goldLocation = 15;
+    const snakeLocation = 20;
+    let gameOver = false;
+
+    function check(position) {
+        if (gameOver) return;
+
+        const id = ids[position];
+        const image = document.getElementById(id);
+
+        let newImage = "images/rabbit.jpg";
+        let points = 1;
+
+        if (silverLocations.includes(position)) {
+            newImage = "images/silver.jpg";
+            points = 3;
+        } else if (position === goldLocation) {
+            newImage = "images/gold.jpg";
+            points = 5;
+        } else if (position === snakeLocation) {
+            newImage = "images/snake.jpg";
+            points = -3;
+            gameOver = true;
+        }
+
+        image.src = newImage;
+        score += points;
+        locationsVisited++;
+        lastLocation = position;
+
+        document.getElementById("locations").innerHTML =
+            "Number of locations checked is " + locationsVisited + ".";
+        document.getElementById("score").innerHTML =
+            "Score is " + score + ".";
+    }
+
+    function help() {
+        let message = "wind"; 
+
+        const row = Math.floor(lastLocation / 7);
+        const col = lastLocation % 7;
+
+        const nearby = [lastLocation - 1, lastLocation + 1, lastLocation - 7, lastLocation + 7];
+        for (let loc of nearby) {
+            if (silverLocations.includes((loc + 35) % 35)) {
+                message = "clink";
+                break;
+            }
+        }
+
+        if (message === "wind") {
+            const snakeRow = Math.floor(snakeLocation / 7);
+            const snakeCol = snakeLocation % 7;
+            if (Math.abs(snakeRow - row) <= 1 && Math.abs(snakeCol - col) <= 1) {
+                message = "rattle";
+            }
+        }
+
+        document.getElementById("help").innerHTML = "Help report: " + message;
+    }
+
+    document.getElementById("clickHelp").onclick = help;
+</script>
 </html>

@@ -31,7 +31,30 @@
       console.log("Halt pressed at:", haltTime);
     }
 
+    function beginTime() {
+      document.getElementById("target").innerHTML = "Your time";
+      haltTime = undefined;
+
+      for (let i = 0; i <= 5; i++) {
+        setTimeout(() => {
+          document.getElementById("counter").innerHTML = 5 - i;
+        }, i * 1000);
+      }
+
+      setTimeout(() => {
+        if (haltTime === undefined) {
+          document.getElementById("target").innerHTML = "Not soon enough!";
+        } else {
+          const targetTime = Date.now();
+          const difference = targetTime - haltTime;
+          document.getElementById("target").innerHTML =
+            "Time was " + difference + " milliseconds.";
+        }
+      }, 5000);
+    }
+
     document.getElementById("haltButton").onclick = recordTime;
+    document.getElementById("goButton").onclick = beginTime;
   </script>
 
 </body>

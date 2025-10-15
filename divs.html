@@ -35,9 +35,11 @@
     <div class="divlist">row item 3</div>
   </div>
 
-  <p>Press the button to create a new element and add it to the end of the list.</p>
+  <p>Use the buttons to add or remove elements in the flex container.</p>
   <input type="text" id="newText" placeholder="Enter new item text">
   <button onclick="addEnd()">Add end</button>
+  <button onclick="addFront()">Add front</button>
+  <button onclick="removeMiddle()">Remove</button>
 
   <script>
     function addEnd() {
@@ -50,6 +52,39 @@
       container.appendChild(element);
 
       document.getElementById("newText").value = "";
+	  function addEnd() {
+      let element = document.createElement("div");
+      let text = document.getElementById("newText").value;
+      element.innerHTML = text;
+      element.className = "divlist";
+
+      let container = document.getElementById("target");
+      container.appendChild(element);
+
+      document.getElementById("newText").value = "";
+    	}
+	}
+
+    function addFront() {
+      let element = document.createElement("div");
+      let text = document.getElementById("newText").value;
+      element.innerHTML = text;
+      element.className = "divlist";
+
+      let container = document.getElementById("target");
+      container.insertBefore(element, container.firstChild);
+
+      document.getElementById("newText").value = "";
+    }
+
+    function removeMiddle() {
+      let divListItems = document.getElementsByClassName("divlist");
+      let length = divListItems.length;
+
+      if (length > 0) {
+        let middleIndex = Math.floor(length / 2);
+        divListItems[middleIndex].remove();
+      }
     }
   </script>
 </body>

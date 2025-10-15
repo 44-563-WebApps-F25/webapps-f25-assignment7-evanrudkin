@@ -2,6 +2,9 @@
 # WebApps-F25-Assignment-7
 An assignment on java script modifying the DOM and using anonymous callback functions.
 
-[Treasure Hunt Hosted at:] https://44-563-webapps-f25.github.io/webapps-f25-assignment7-evanrudkin/treasure.html
-[Reflex Game Hosted at:] https://44-563-webapps-f25.github.io/webapps-f25-assignment7-evanrudkin/reflex.html
-[Div List Builder Hosted at:] https://44-563-webapps-f25.github.io/webapps-f25-assignment7-evanrudkin/divs.html
+# Treasure Hunt Hosted at: 
+https://44-563-webapps-f25.github.io/webapps-f25-assignment7-evanrudkin/treasure.html
+# Reflex Game Hosted at: 
+https://44-563-webapps-f25.github.io/webapps-f25-assignment7-evanrudkin/reflex.html
+# Div List Builder Hosted at:
+https://44-563-webapps-f25.github.io/webapps-f25-assignment7-evanrudkin/divs.html
